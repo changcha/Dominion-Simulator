@@ -36,7 +36,7 @@ public abstract class Action extends Card{
 		return buy;
 	}
 	
-	public int getCoin(){
+	public int getTreasure(){
 		return coin;
 	}
 	

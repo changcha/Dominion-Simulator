@@ -15,7 +15,7 @@ public class FeastTest extends CardTest {
 	@Test
 	public void trashFeast(){
 		assertFalse(supply.getTrash().contains(f));
-		executeWrapper(f, player, supply);
+		f.execute(player, supply);
 		assertTrue(supply.getTrash().contains(f));
 	}
 	

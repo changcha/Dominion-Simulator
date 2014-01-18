@@ -58,9 +58,4 @@ public class CardTest {
 		assertTrue(trashSize >= supply.getTrash().size() - 4);
 		assertTrue(handSize <= player.getHand().size() + 4);
 	}*/
-	
-	public void executeWrapper(Action a, Player p, Supply s){
-		p.modifyActions(-1);
-		a.execute(p, s);
-	}
 }

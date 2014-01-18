@@ -15,7 +15,7 @@ public class ChancellorTest extends CardTest{
 	@Test
 	public void gainsTwoCoin(){
 		assertEquals(player.getTreasure(), 0);
-		executeWrapper(c, player, supply);
+		c.execute(player, supply);
 		assertEquals(player.getTreasure(), 2);
 	}
 	
@@ -23,7 +23,7 @@ public class ChancellorTest extends CardTest{
 	public void playerCanDiscardDeck(){
 		int deckSize = player.getDeck().size();
 		assertTrue(deckSize != 0);
-		executeWrapper(c, player, supply);
+		c.execute(player, supply);
 		assertTrue(player.getDeck().size() == 0);
 	}
 }
