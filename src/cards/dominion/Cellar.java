@@ -5,7 +5,6 @@ import java.util.List;
 import game.Supply;
 import player.Player;
 import cards.Action;
-import cards.Card;
 
 public class Cellar extends Action {
 
@@ -14,7 +13,7 @@ public class Cellar extends Action {
 	}
 
 	public void execute(Player p, Supply s) {
-		p.modifyActions(1);
+		p.modifyActions(getAction());
 		List<String> discarded = p.discardCards(p.getHand().size());
 		p.drawCards(discarded.size());
 	}

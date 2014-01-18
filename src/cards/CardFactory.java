@@ -27,6 +27,7 @@ public class CardFactory {
 		cards.put("CouncilRoom", new CouncilRoom(5, "CouncilRoom", 0, 1, 0, 4));
 		cards.put("Feast", new Feast(4, "Feast", 0, 0, 0, 0));
 		cards.put("Festival", new Festival(5, "Festival", 2, 1, 2, 0));
+		cards.put("Gardens", new Gardens(4, "Gardens"));
 		
 		//case "CouncilRoom": return new CouncilRoom(4, name);
 				//case "Feast": return new Feast(4, name);

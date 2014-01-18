@@ -3,7 +3,6 @@ package cards.dominion;
 import game.Supply;
 import player.Player;
 import cards.Action;
-import cards.Card;
 
 public class Chancellor extends Action {
 	
@@ -13,7 +12,7 @@ public class Chancellor extends Action {
 
 	@Override
 	public void execute(Player p, Supply s) {
-		p.modifyTreasures(2);
+		p.modifyTreasures(getBuy());
 		if(p.getGamePlan().chooseToDiscardDeck()){
 			p.discardDeck();
 		}

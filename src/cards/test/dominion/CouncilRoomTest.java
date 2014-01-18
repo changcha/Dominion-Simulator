@@ -5,13 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import player.Player;
+import cards.Action;
 import cards.CardFactory;
-import cards.dominion.CouncilRoom;
 import cards.test.base.CardTest;
 
 public class CouncilRoomTest extends CardTest {
 	
-	CouncilRoom c = (CouncilRoom) CardFactory.getCard("CouncilRoom");
+	private Action c = (Action) CardFactory.getCard("CouncilRoom");
 	
 	@Test
 	public void playerGetExtraBuy(){

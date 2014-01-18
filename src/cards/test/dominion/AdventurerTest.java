@@ -6,14 +6,14 @@ import java.util.List;
 
 import org.junit.Test;
 
+import cards.Action;
 import cards.Card;
 import cards.CardFactory;
-import cards.dominion.Adventurer;
 import cards.test.base.CardTest;
 
 public class AdventurerTest extends CardTest{
 
-	private Adventurer advent = (Adventurer) CardFactory.getCard("Adventurer");
+	private Action advent = (Action) CardFactory.getCard("Adventurer");
 	
 	@Test
 	public void drawsExactlyTwoTreasureCards(){

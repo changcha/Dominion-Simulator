@@ -1,17 +1,8 @@
 package cards.test.base;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.List;
-import java.util.Stack;
-
 import org.junit.Before;
-import org.junit.Test;
-
-import cards.Action;
 import cards.Card;
-import cards.CardFactory;
 import cards.Treasure;
 import player.*;
 import game.Supply;
@@ -23,7 +14,6 @@ public class CardTest {
 	
 	@Before
 	public void setup(){
-		Stack<Card> start = new Stack<Card>();
 		supply = new Supply();
 		Player[] opps = new Player[2];
 		opps[0] = new Player(supply, null);

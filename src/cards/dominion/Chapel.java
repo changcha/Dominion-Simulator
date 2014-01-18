@@ -5,7 +5,6 @@ import java.util.List;
 import game.Supply;
 import player.Player;
 import cards.Action;
-import cards.Card;
 
 public class Chapel extends Action {
 

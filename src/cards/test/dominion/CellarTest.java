@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import cards.Action;
 import cards.CardFactory;
-import cards.dominion.Cellar;
 import cards.test.base.CardTest;
 
 public class CellarTest extends CardTest{

@@ -3,7 +3,6 @@ package cards.dominion;
 import game.Supply;
 import player.Player;
 import cards.Action;
-import cards.Card;
 
 public class CouncilRoom extends Action {
 
@@ -12,8 +11,8 @@ public class CouncilRoom extends Action {
 	}
 	
 	public void execute(Player p, Supply s){
-		p.modifyBuys(1);
-		p.drawCards(4);
+		p.modifyBuys(getBuy());
+		p.drawCards(getDraw());
 		for(Player opp: p.getOpponents()){
 			opp.drawCards(1);
 		}

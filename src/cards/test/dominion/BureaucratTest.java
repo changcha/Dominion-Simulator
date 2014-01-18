@@ -6,14 +6,12 @@ import org.junit.Test;
 
 import player.Player;
 import cards.Action;
-import cards.Card;
 import cards.CardFactory;
-import cards.dominion.Bureaucrat;
 import cards.test.base.CardTest;
 
 public class BureaucratTest extends CardTest {
 	
-	private Bureaucrat b = (Bureaucrat) CardFactory.getCard("Bureaucrat"); 
+	private Action b = (Action) CardFactory.getCard("Bureaucrat"); 
 	
 	@Test
 	public void gainsSilverAndPlacesOnTopOfDeck(){

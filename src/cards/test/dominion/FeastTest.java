@@ -4,13 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import cards.Action;
 import cards.CardFactory;
-import cards.dominion.Feast;
 import cards.test.base.CardTest;
 
 public class FeastTest extends CardTest {
 
-	Feast f = (Feast) CardFactory.getCard("Feast");
+	private Action f = (Action) CardFactory.getCard("Feast");
 	
 	@Test
 	public void trashFeast(){
