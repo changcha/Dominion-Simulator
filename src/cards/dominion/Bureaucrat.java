@@ -6,8 +6,8 @@ import cards.Action;
 
 public class Bureaucrat extends Action {
 
-	public Bureaucrat(int cost, String name, int action, int buy, int coin, int draw) {
-		super(cost, name, action, buy, coin, draw);
+	public Bureaucrat(int cost, String name) {
+		super(cost, name);
 	}
 
 	public void execute(Player p, Supply s) {

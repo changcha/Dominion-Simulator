@@ -11,8 +11,7 @@ public class CouncilRoom extends Action {
 	}
 	
 	public void execute(Player p, Supply s){
-		p.modifyBuys(getBuy());
-		p.drawCards(getDraw());
+		super.execute(p, s);
 		for(Player opp: p.getOpponents()){
 			opp.drawCards(1);
 		}

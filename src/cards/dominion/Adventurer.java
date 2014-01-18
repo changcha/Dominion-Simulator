@@ -8,8 +8,8 @@ import cards.Treasure;
 
 public class Adventurer extends Action {
 
-	public Adventurer(int cost, String name, int action, int buy, int coin, int draw) {
-		super(cost, name, action, buy, coin, draw);
+	public Adventurer(int cost, String name) {
+		super(cost, name);
 	}
 
 	public void execute(Player p, Supply s) {

@@ -13,7 +13,7 @@ public class Cellar extends Action {
 	}
 
 	public void execute(Player p, Supply s) {
-		p.modifyActions(getAction());
+		super.execute(p, s);
 		List<String> discarded = p.discardCards(p.getHand().size());
 		p.drawCards(discarded.size());
 	}

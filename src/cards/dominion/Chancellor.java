@@ -12,7 +12,7 @@ public class Chancellor extends Action {
 
 	@Override
 	public void execute(Player p, Supply s) {
-		p.modifyTreasures(getBuy());
+		super.execute(p, s);
 		if(p.getGamePlan().chooseToDiscardDeck()){
 			p.discardDeck();
 		}

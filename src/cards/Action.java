@@ -3,7 +3,7 @@ package cards;
 import game.Supply;
 import player.Player;
 
-public abstract class Action extends Card{
+public class Action extends Card{
 	
 	protected int action;
 	protected int buy;
@@ -26,7 +26,12 @@ public abstract class Action extends Card{
 		return getAction() == 0;
 	}
 	
-	public abstract void execute(Player p, Supply s);
+	public void execute(Player p, Supply s){
+		p.modifyActions(getAction());
+		p.modifyBuys(getBuy());
+		p.modifyTreasures(getTreasure());
+		p.drawCards(getDraw());
+	}
 	
 	public int getAction(){
 		return action;

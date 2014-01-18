@@ -19,22 +19,19 @@ public class CardFactory {
 		cards.put("Estate", new Estate(2, "Estate"));
 		cards.put("Duchy", new Duchy(5, "Duchy"));
 		cards.put("Province", new Province(8, "Province"));
-		cards.put("Adventurer", new Adventurer(6, "Adventurer", 0, 0, 0, 0));
-		cards.put("Bureaucrat", new Bureaucrat(4, "Bureaucrat", 0, 0, 0, 0));
+		cards.put("Adventurer", new Adventurer(6, "Adventurer"));
+		cards.put("Bureaucrat", new Bureaucrat(4, "Bureaucrat"));
 		cards.put("Cellar", new Cellar(2, "Cellar", 1, 0, 0, 0));
 		cards.put("Chancellor", new Chancellor(3, "Chancellor", 0, 0, 2, 0));
 		cards.put("Chapel", new Chapel(2, "Chapel", 0, 0, 0, 0));
 		cards.put("CouncilRoom", new CouncilRoom(5, "CouncilRoom", 0, 1, 0, 4));
-		cards.put("Feast", new Feast(4, "Feast", 0, 0, 0, 0));
-		cards.put("Festival", new Festival(5, "Festival", 2, 1, 2, 0));
+		cards.put("Feast", new Feast(4, "Feast"));
+		cards.put("Festival", new Action(5, "Festival", 2, 1, 2, 0));
 		cards.put("Gardens", new Gardens(4, "Gardens"));
-		
-		//case "CouncilRoom": return new CouncilRoom(4, name);
-				//case "Feast": return new Feast(4, name);
-				//case "Festival": return new Festival(5, name);
-				//case "Gardens": return new Gardens(4, name);
-				//case "Laboratory": return new Laboratory(5, name);
-				//case "Library": return new Library(5, name);
+		cards.put("Laboratory", new Action(5, "Laboratory", 1, 0, 0, 2));
+		cards.put("Library", new Library(5, "Library"));
+		cards.put("Market", new Action(5, "Market", 1, 1, 1, 1));
+
 				//case "Market": return new Market(5, name);
 				//case "Militia": return new Militia(4, name);
 				//case "Mine": return new Mine(5, name);

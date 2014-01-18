@@ -6,8 +6,8 @@ import cards.Action;
 
 public class Feast extends Action {
 
-	public Feast(int cost, String name, int action, int buy, int coin, int draw) {
-		super(cost, name, action, buy, coin, draw);
+	public Feast(int cost, String name) {
+		super(cost, name);
 	}
 
 	@Override
