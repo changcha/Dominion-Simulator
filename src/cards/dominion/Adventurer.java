@@ -1,6 +1,5 @@
 package cards.dominion;
 
-import game.Supply;
 import player.Player;
 import cards.Action;
 import cards.Card;
@@ -12,10 +11,11 @@ public class Adventurer extends Action {
 		super(cost, name);
 	}
 
-	public void execute(Player p, Supply s) {
+	@Override
+	public void execute(Player p) {
 		int treasureCount = 0;
 		while(treasureCount < 2 && !p.noCardsAvailable()){
-			Card card = p.revealCardsFromDeck();
+			Card card = p.revealCardFromDeck();
 			if(card instanceof Treasure){
 				p.addToHand(card);
 				p.removeFromReveal(card);

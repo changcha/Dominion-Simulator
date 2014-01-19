@@ -1,6 +1,5 @@
 package cards.dominion;
 
-import game.Supply;
 import player.Player;
 import cards.Action;
 
@@ -11,8 +10,8 @@ public class Chancellor extends Action {
 	}
 
 	@Override
-	public void execute(Player p, Supply s) {
-		super.execute(p, s);
+	public void execute(Player p) {
+		super.execute(p);
 		if(p.getGamePlan().chooseToDiscardDeck()){
 			p.discardDeck();
 		}

@@ -14,22 +14,22 @@ public class FestivalTest extends CardTest{
 	
 	@Test
 	public void gainTwoActions(){
-		int actionCount = player.getActions();
-		f.execute(player, supply);
-		assertEquals(actionCount + 2, player.getActions()); 
+		int actionCount = player.getActionCount();
+		f.execute(player);
+		assertEquals(actionCount + 2, player.getActionCount()); 
 	}
 	
 	@Test
 	public void gainABuy(){
 		int buyCount = player.getBuyCount();
-		f.execute(player, supply);
+		f.execute(player);
 		assertEquals(buyCount + 1, player.getBuyCount());
 	}
 	
 	@Test
 	public void gainTwoCoin(){
-		int coinCount = player.getTreasure();
-		f.execute(player, supply);
-		assertEquals(coinCount + 2, player.getTreasure());
+		int coinCount = player.getTreasureCount();
+		f.execute(player);
+		assertEquals(coinCount + 2, player.getTreasureCount());
 	}
 }

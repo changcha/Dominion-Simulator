@@ -14,16 +14,16 @@ public class ChancellorTest extends CardTest{
 	
 	@Test
 	public void gainsTwoCoin(){
-		assertEquals(player.getTreasure(), 0);
-		c.execute(player, supply);
-		assertEquals(player.getTreasure(), 2);
+		assertEquals(player.getTreasureCount(), 0);
+		c.execute(player);
+		assertEquals(player.getTreasureCount(), 2);
 	}
 	
 	@Test
 	public void playerCanDiscardDeck(){
 		int deckSize = player.getDeck().size();
 		assertTrue(deckSize != 0);
-		c.execute(player, supply);
+		c.execute(player);
 		assertTrue(player.getDeck().size() == 0);
 	}
 }

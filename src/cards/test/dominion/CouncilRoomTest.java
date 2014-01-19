@@ -16,14 +16,14 @@ public class CouncilRoomTest extends CardTest {
 	@Test
 	public void playerGetExtraBuy(){
 		int buys = player.getBuyCount();
-		c.execute(player, supply);
+		c.execute(player);
 		assertEquals(buys + 1, player.getBuyCount());
 	}
 	
 	@Test
 	public void playerGetsFourDraws(){
 		int cards = player.getHand().size();
-		c.execute(player, supply);
+		c.execute(player);
 		assertEquals(cards + 4, player.getHand().size());
 	}
 	
@@ -34,7 +34,7 @@ public class CouncilRoomTest extends CardTest {
 		for(int i = 0; i < opps.length; i++){
 			sizes[i] = opps[i].getHand().size();
 		}
-		c.execute(player, supply);
+		c.execute(player);
 		for(int i = 0; i < opps.length; i++){
 			assertEquals(opps[i].getHand().size(), sizes[i] + 1);
 		}

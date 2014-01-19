@@ -15,14 +15,14 @@ public class LaboratoryTest extends CardTest {
 	@Test
 	public void playerDrawsTwoCards(){
 		int handSize = player.getHand().size();
-		lab.execute(player, supply);
+		lab.execute(player);
 		assertEquals(handSize + 2, player.getHand().size());
 	}
 	
 	@Test
 	public void playerGainAnAction(){
-		int actionCount = player.getActions();
-		lab.execute(player, supply);
-		assertEquals(actionCount + 1, player.getActions());
+		int actionCount = player.getActionCount();
+		lab.execute(player);
+		assertEquals(actionCount + 1, player.getActionCount());
 	}
 }

@@ -1,6 +1,5 @@
 package cards;
 
-import game.Supply;
 import player.Player;
 
 public class Action extends Card{
@@ -26,7 +25,7 @@ public class Action extends Card{
 		return getAction() == 0;
 	}
 	
-	public void execute(Player p, Supply s){
+	public void execute(Player p){
 		p.modifyActions(getAction());
 		p.modifyBuys(getBuy());
 		p.modifyTreasures(getTreasure());

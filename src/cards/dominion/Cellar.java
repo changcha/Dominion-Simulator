@@ -1,8 +1,6 @@
 package cards.dominion;
 
 import java.util.List;
-
-import game.Supply;
 import player.Player;
 import cards.Action;
 
@@ -12,9 +10,10 @@ public class Cellar extends Action {
 		super(cost, name, action, buy, coin, draw);
 	}
 
-	public void execute(Player p, Supply s) {
-		super.execute(p, s);
-		List<String> discarded = p.discardCards(p.getHand().size());
+	@Override
+	public void execute(Player p) {
+		super.execute(p);
+		List<String> discarded = p.discardCardsFromHand(p.getHand().size(), false);
 		p.drawCards(discarded.size());
 	}
 

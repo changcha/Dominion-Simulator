@@ -15,12 +15,16 @@ public class FeastTest extends CardTest {
 	@Test
 	public void trashFeast(){
 		assertFalse(supply.getTrash().contains(f));
-		f.execute(player, supply);
+		f.execute(player);
 		assertTrue(supply.getTrash().contains(f));
 	}
 	
 	@Test
-	public void playerGainsCardCostingUpToFive(){
-		
+	public void playerGainsCardCostingUpToFiveAndPlacesInDiscard(){
+		player.shuffle();
+		assertEquals(player.getDiscard().size(), 0);
+		f.execute(player);
+		assertEquals(player.getDiscard().size(), 1);
+		assertTrue(player.getDiscard().get(0).getCost() <= 5);
 	}
 }

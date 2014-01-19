@@ -1,9 +1,9 @@
 package game;
 
 import java.util.*;
-import java.util.List;
 
 import cards.Card;
+import cards.CardFactory;
 
 public class Supply {
 
@@ -12,6 +12,7 @@ public class Supply {
 	
 	public Supply(){
 		trash = new ArrayList<Card>();
+		//Set piles.
 	}
 	
 	public List<Card> getTrash() {
@@ -23,6 +24,6 @@ public class Supply {
 	}
 
 	public Card getCard(String name) {
-		return piles.get(name);
+		return CardFactory.getCard(name); //Incorrect implementation for now. Just getting it to work.
 	}
 }

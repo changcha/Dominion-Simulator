@@ -1,8 +1,5 @@
 package cards.dominion;
 
-import java.util.List;
-
-import game.Supply;
 import player.Player;
 import cards.Action;
 
@@ -12,7 +9,9 @@ public class Chapel extends Action {
 		super(cost, name, action, buy, coin, draw);
 	}
 
-	public void execute(Player p, Supply s) {
-		List<String> trashed = p.mayTrashCards(4);
+	@Override
+	public void execute(Player p) {
+		/*List<String> trashed =*/ p.trashCardsFromHand(4, false);
+		//Report on trahsed cards somehow?
 	}
 }

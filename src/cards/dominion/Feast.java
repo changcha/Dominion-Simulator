@@ -11,8 +11,8 @@ public class Feast extends Action {
 	}
 
 	@Override
-	public void execute(Player p, Supply s) {
-		// TODO Auto-generated method stub
-		
+	public void execute(Player p) {
+		p.trashCard(this);
+		p.gainCard(5);
 	}	
 }

@@ -20,7 +20,7 @@ public class AdventurerTest extends CardTest{
 		List<Card> startHand = player.getHand();
 		int handSize = startHand.size();
 		int treasureCount = countTreasures(startHand);
-		advent.execute(player, supply);
+		advent.execute(player);
 		assertEquals(player.getHand().size(), handSize + 2);
 		assertEquals(countTreasures(startHand), treasureCount + 2);
 	}
@@ -29,16 +29,16 @@ public class AdventurerTest extends CardTest{
 	public void discardsAllOtherRevealedCards(){
 		//Not sure how to test...
 		int discardSize = player.getDiscard().size();
-		advent.execute(player, supply);
+		advent.execute(player);
 		assertTrue(player.getDiscard().size() > discardSize);
 	}*/
 	
 	@Test
 	public void drawsLessThanTwoTreasuresWhenNoCardsInDiscardOrDeck(){
 		player.drawCards(5);
-		player.trashCards(8);
+		player.trashCardsFromHand(8, true);
 		int handSize = player.getHand().size();
-		advent.execute(player, supply);
+		advent.execute(player);
 		assertEquals(player.getHand().size(), handSize);
 	}
 }

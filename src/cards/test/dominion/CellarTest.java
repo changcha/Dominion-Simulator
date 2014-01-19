@@ -16,15 +16,15 @@ public class CellarTest extends CardTest{
 	public void discardAnyNumberOfCardsAndDrawThatSameAmount(){
 		int handSize = player.getHand().size();
 		int discardSize = player.getDiscard().size();
-		c.execute(player, supply);
+		c.execute(player);
 		assertEquals(handSize, player.getHand().size());
 		assertTrue(player.getDiscard().size() >= discardSize);
 	}
 	
 	@Test
 	public void playerGainsExtraAction(){
-		int actionCount = player.getActions();
-		c.execute(player, supply);
-		assertEquals(actionCount + 1, player.getActions());
+		int actionCount = player.getActionCount();
+		c.execute(player);
+		assertEquals(actionCount + 1, player.getActionCount());
 	}
 }

@@ -16,7 +16,7 @@ public class ChapelTest extends CardTest{
 	public void trashUpToFourCards(){
 		int trashSize = supply.getTrash().size();
 		int handSize = player.getHand().size();
-		c.execute(player, supply);
+		c.execute(player);
 		assertTrue(trashSize >= supply.getTrash().size() - 4);
 		assertTrue(handSize <= player.getHand().size() + 4);
 	}

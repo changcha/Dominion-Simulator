@@ -41,7 +41,7 @@ public class CardTest {
 		int handSize = player.getHand().size();
 
 		if(c instanceof Action){
-			((Action)c).execute(player, supply);
+			((Action)c).execute(player);
 		}
 		assertEquals(c.getName(), "Chapel");
 		assertEquals(c.getCost(), 2);

@@ -15,7 +15,7 @@ public class BureaucratTest extends CardTest {
 	
 	@Test
 	public void gainsSilverAndPlacesOnTopOfDeck(){
-		b.execute(player, supply);
+		b.execute(player);
 		assertEquals(player.getDeck().pop().getName(), "Silver");
 	}
 	
@@ -26,7 +26,7 @@ public class BureaucratTest extends CardTest {
 		int handSize = opp.getHand().size();
 		Player[] opps = {opp};
 		player = new Player(null, supply, opps);
-		b.execute(player, supply);
+		b.execute(player);
 		assertEquals(opp.getHand().size(), handSize - 1);
 		assertEquals(opp.getDeck().peek().getName(), "Estate");
 	}

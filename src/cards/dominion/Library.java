@@ -1,6 +1,5 @@
 package cards.dominion;
 
-import game.Supply;
 import player.Player;
 import cards.Action;
 
@@ -10,7 +9,8 @@ public class Library extends Action {
 		super(cost, name);
 	}
 	
-	public void execute(Player p, Supply s){
+	@Override
+	public void execute(Player p){
 		
 	}
 }

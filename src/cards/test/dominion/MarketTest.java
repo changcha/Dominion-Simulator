@@ -14,29 +14,29 @@ public class MarketTest extends CardTest {
 	
 	@Test
 	public void playerGainAnAction(){
-		int actionCount = player.getActions();
-		m.execute(player, supply);
-		assertEquals(actionCount + 1, player.getActions());
+		int actionCount = player.getActionCount();
+		m.execute(player);
+		assertEquals(actionCount + 1, player.getActionCount());
 	}
 	
 	@Test
 	public void playerGainsABuy(){
 		int buyCount = player.getBuyCount();
-		m.execute(player, supply);
+		m.execute(player);
 		assertEquals(buyCount + 1, player.getBuyCount());
 	}
 	
 	@Test
 	public void playerGainsACoin(){
-		int treasureCount = player.getTreasure();
-		m.execute(player, supply);
-		assertEquals(treasureCount + 1, player.getTreasure());
+		int treasureCount = player.getTreasureCount();
+		m.execute(player);
+		assertEquals(treasureCount + 1, player.getTreasureCount());
 	}
 	
 	@Test
 	public void playerDrawsACard(){
 		int handSize = player.getHand().size();
-		m.execute(player, supply);
+		m.execute(player);
 		assertEquals(handSize + 1, player.getHand().size());
 	}
 }
