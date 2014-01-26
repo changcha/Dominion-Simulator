@@ -3,7 +3,6 @@ package player;
 import game.Supply;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Stack;
@@ -12,7 +11,7 @@ import cards.Action;
 import cards.Card;
 import cards.CardFactory;
 import cards.Treasure;
-//TODO: Refactor hard, this is getting out of control. 
+
 public class Player {
 
 	private List<Card> hand;

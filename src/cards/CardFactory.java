@@ -29,11 +29,12 @@ public class CardFactory {
 		cards.put("Festival", new Action(5, "Festival", 2, 1, 2, 0));
 		cards.put("Gardens", new Gardens(4, "Gardens"));
 		cards.put("Laboratory", new Action(5, "Laboratory", 1, 0, 0, 2));
-		cards.put("Library", new Library(5, "Library"));
+		cards.put("Library", new Action(5, "Library"));
 		cards.put("Market", new Action(5, "Market", 1, 1, 1, 1));
-
+		cards.put("Militia", new Militia(4, "Militia", 0, 0, 2, 0));
+		cards.put("Moneylender", new Moneylender(4, "Moneylender", 0, 0, 0, 0));
 				//case "Market": return new Market(5, name);
-				//case "Militia": return new Militia(4, name);
+				
 				//case "Mine": return new Mine(5, name);
 				//case "Moat": return new Moat(2, name);
 				//case "Moneylender": return new Moneylender(4, name);
