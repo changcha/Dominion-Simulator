@@ -15,12 +15,15 @@ public class CardTest {
 	@Before
 	public void setup(){
 		supply = new Supply();
+		
 		Player[] opps = new Player[2];
 		opps[0] = new Player(supply, null);
 		opps[1] = new Player(supply, null);
+		opps[0].setGamePlan(new MockGamePlan(opps[0]));
+		opps[1].setGamePlan(new MockGamePlan(opps[1]));
+		
 		player = new Player(supply, opps);	
-		GamePlan plan = new MockGamePlan(player);
-		player.setGamePlan(plan);
+		player.setGamePlan(new MockGamePlan(player));
 	}
 	
 	public int countTreasures(List<Card> cards){

@@ -11,6 +11,8 @@ public class Library extends Action {
 	
 	@Override
 	public void execute(Player p){
-		
+		//while(p.getHand().size() < 7){
+			//p.addToHand(p.drawCards(1));
+		//}
 	}
 }

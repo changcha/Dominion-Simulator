@@ -11,7 +11,6 @@ public class Chapel extends Action {
 
 	@Override
 	public void execute(Player p) {
-		/*List<String> trashed =*/ p.trashCardsFromHand(4, false);
-		//Report on trahsed cards somehow?
+		p.trash(4, 0, false, p.getHand());
 	}
 }

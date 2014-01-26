@@ -29,7 +29,7 @@ public class Action extends Card{
 		p.modifyActions(getAction());
 		p.modifyBuys(getBuy());
 		p.modifyTreasures(getTreasure());
-		p.drawCards(getDraw());
+		p.getHand().addAll(p.drawCards(getDraw()));
 	}
 	
 	public int getAction(){

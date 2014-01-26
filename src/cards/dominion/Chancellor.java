@@ -13,7 +13,7 @@ public class Chancellor extends Action {
 	public void execute(Player p) {
 		super.execute(p);
 		if(p.getGamePlan().chooseToDiscardDeck()){
-			p.discardDeck();
+			p.moveCards(p.getDeck(), p.getDiscard());
 		}
 	}
 }

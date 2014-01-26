@@ -1,5 +1,8 @@
 package cards.dominion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import player.Player;
 import cards.Action;
 import cards.Card;
@@ -13,15 +16,15 @@ public class Adventurer extends Action {
 
 	@Override
 	public void execute(Player p) {
-		int treasureCount = 0;
-		while(treasureCount < 2 && !p.noCardsAvailable()){
+		List<Card> treasures = new ArrayList<Card>();
+		while(treasures.size() < 2 && !p.noCardsAvailable()){
 			Card card = p.revealCardFromDeck();
 			if(card instanceof Treasure){
-				p.addToHand(card);
+				treasures.add(card);
 				p.removeFromReveal(card);
-				treasureCount++;
 			}
 		}
 		p.discardReveal();
+		p.moveCards(treasures, p.getHand());
 	}
 }

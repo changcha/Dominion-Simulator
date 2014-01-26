@@ -13,7 +13,7 @@ public class CouncilRoom extends Action {
 	public void execute(Player p){
 		super.execute(p);
 		for(Player opp: p.getOpponents()){
-			opp.drawCards(1);
+			opp.moveCards(opp.drawCards(1), opp.getHand());
 		}
 	}
 }

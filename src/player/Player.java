@@ -12,7 +12,7 @@ import cards.Action;
 import cards.Card;
 import cards.CardFactory;
 import cards.Treasure;
-
+//TODO: Refactor hard, this is getting out of control. 
 public class Player {
 
 	private List<Card> hand;
@@ -42,6 +42,7 @@ public class Player {
 		this.plan = plan;
 		this.supply = supply;
 		this.opponents = opponents;
+		
 		play = new ArrayList<Card>();
 		deck = new Stack<Card>();
 		discard = new ArrayList<Card>();
@@ -55,7 +56,7 @@ public class Player {
 		}
 		hand = new ArrayList<Card>();
 		shuffle();
-		drawHand();
+		hand.addAll(drawCards(5));
 	}
 	
 	/********CARD MANAGEMENT********/
@@ -66,69 +67,105 @@ public class Player {
 			deck.push(discard.remove(random.nextInt(discard.size())));
 		}
 	}
-	
-	public void addToHand(Card card){
-		hand.add(card);
-	}
 
-	public Card buyCard(int buys, int coin){
-		return null;
+	public void moveCard(List<Card> from, List<Card> to, Card c){
+		if(from.remove(c))
+			to.add(c);
+		else 
+			throw new IllegalArgumentException("Can't remove card");
 	}
 	
-	public void drawHand(){
-		drawCards(5);
+	public void moveCards(List<Card> from, List<Card> to){
+		if(from == null || to == null)
+			throw new IllegalArgumentException();
+		to.addAll(from);
+		from.clear();
 	}
 	
-	public void drawCards(int draw) {
-		for(int i = 0; i < draw; i++){
-			if(deck.isEmpty()){
-				shuffle();
-			}
-			hand.add(deck.pop());
-		}
+	public List<Card> discard(int limit, int min, boolean exact, List<Card> from){
+		List<Card> discarded = plan.chooseCardsToDiscard(limit, min, exact, from);
+		removeCards(from, discarded);
+		discard.addAll(discarded);
+		return discarded;
 	}
 	
-	public Card gainCard(int amount){
-		String name = plan.chooseCardToGain(amount, supply);
-		Card card = supply.getCard(name);
-		discard.add(card);
-		return card;
+	public String discard(Card card){
+		if(hand.remove(card))
+			discard.add(card);
+		else
+			throw new IllegalArgumentException("Can't discard card from hand");
+		return card.getName();
 	}
 	
-	private List<Card> removeCards(List<Card> from, List<String> toRemove){
-		List<Card> removed = new ArrayList<Card>();
-		for(int i = 0; i < toRemove.size(); i++){
-			Iterator<Card> it = from.iterator();
-			while(it.hasNext()){
-				Card c = it.next();
-				if(c.getName().equals(toRemove.get(i))){
-					removed.add(c);
-					it.remove();
-					break;
-				}
-			}
-		}
-		System.out.println(removed);
-		return removed;
-	}
-	
-	//Assumed card was from Hand for now
-	public String trashCard(Card c){
-		hand.remove(c);
-		supply.addToTrash(c);
-		return c.getName();
-	}
-	
-	public List<String> trashCardsFromHand(int limit, boolean exact){
-		List<String> trashed = plan.chooseCardsToTrash(limit, exact, hand);
-		supply.getTrash().addAll(removeCards(hand, trashed));
+	public List<Card> trash(int limit, int min, boolean exact, List<Card> from){
+		List<Card> trashed = plan.chooseCardsToTrash(limit, min, exact, from);
+		removeCards(from, trashed);
+		supply.addToTrash(trashed);
 		return trashed;
 	}
 	
-	public List<String> discardCardsFromHand(int limit, boolean exact){
-		List<String> discarded = plan.chooseCardsToDiscard(limit, exact, hand);
-		discard.addAll(removeCards(hand, discarded));
-		return discarded;
+	public String trash(Card card){
+		if(hand.remove(card))
+			supply.addToTrash(card);
+		else
+			throw new IllegalArgumentException("Can't trash card from hand");
+		return card.getName();
+	}
+	
+	private void removeCards(List<Card> from, List<Card> toRemove){
+		for(int i = 0; i < toRemove.size(); i++){
+			Card c = toRemove.get(i);
+			if(!from.remove(c)){
+				throw new IllegalArgumentException();
+			}
+		}
+	}
+	
+	public List<Card> drawCards(int drawCount) {
+		List<Card> drawn = new ArrayList<Card>();
+		for(int i = 0; i < drawCount; i++){
+			if(noCardsAvailable()){
+				break;
+			} else if(deck.isEmpty()){
+				shuffle();
+			}
+			drawn.add(deck.pop());
+		}
+		return drawn; 
+	}
+	
+	public void drawIntoHand(int drawCount){
+		moveCards(drawCards(drawCount), hand);
+	}
+	
+	public void gainCard(int amount){
+		gainCard(amount, discard);
+	}
+	
+	public void gainCard(int amount, List<Card> to){
+		String name = plan.chooseCardToGain(amount, supply);
+		Card card = supply.getCard(name);
+		to.add(card);
+	}
+	
+	public void gainCard(String name){
+		gainCard(name, discard);
+	}
+	
+	public void gainCard(String name, List<Card> to){
+		to.add(supply.getCard(name));
+	}
+	
+	public void buyCard(int coin, int buys){
+		buyCard(coin, buys, discard);
+	}
+	
+	public void buyCard(int coin, int buys, List<Card> to){
+		List<Card> purchases = plan.chooseCardsToBuy(coin, buys);
+		for(int i = 0; i < purchases.size(); i++){
+			Card card = supply.getCard(purchases.get(i).getName());
+			to.add(card);
+		}
 	}
 	
 	public void revealHand(){
@@ -173,16 +210,6 @@ public class Player {
 		}
 		return false;
 	}
-
-	public void moveCardToPlay(Card c) {
-		hand.remove(c);
-		play.add(c);
-	}
-
-	public void discardDeck(){
-		discard.addAll(deck);
-		deck = new Stack<Card>();
-	}
 	
 	/********GETTERS/SETTERS********/
 	public List<Card> getHand(){
@@ -195,6 +222,10 @@ public class Player {
 	
 	public Stack<Card> getDeck() {
 		return deck;
+	}
+	
+	public List<Card> getReveal(){
+		return reveal;
 	}
 	
 	public Player[] getOpponents(){

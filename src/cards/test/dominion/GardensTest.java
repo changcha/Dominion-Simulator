@@ -19,7 +19,7 @@ public class GardensTest extends CardTest {
 		assertEquals(pointsA, size/10);
 		
 		for(int i = 0; i < 20; i++){
-			player.gainCard(0);
+			player.gainCard("Copper", player.getDeck());
 		}
 		player.shuffle();
 		int pointsB = g.getPoints(player);

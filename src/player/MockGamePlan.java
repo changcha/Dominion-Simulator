@@ -3,11 +3,13 @@ package player;
 import game.Supply;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
 import cards.Action;
 import cards.Card;
+import cards.CardFactory;
 import cards.Treasure;
 
 public class MockGamePlan implements GamePlan{
@@ -18,49 +20,51 @@ public class MockGamePlan implements GamePlan{
 		this.player = player;
 	}
 
-	public List<String> chooseCardsToDiscard(int limit, boolean exact, List<Card> from) {
-		List<String> list = new ArrayList<String>();
-		for(int i = 0; i < limit; i++){
-			list.add(player.getHand().get(i).getName());
-		}
-		return list;
+	public List<Card> chooseCardsToDiscard(int limit, int min, boolean exact, List<Card> from) {
+		return chooseCardsToTrash(limit, min, exact, from);
 	}
 
-	public List<String> chooseCardsToTrash(int limit, boolean exact, List<Card> from) {
-		List<String> list = new ArrayList<String>();
-		for(int i = 0; i < limit; i++){
-			list.add(player.getHand().get(i).getName());
+	public List<Card> chooseCardsToTrash(int limit, int min, boolean exact, List<Card> from) {
+		List<Card> returned = new ArrayList<Card>();
+		if(exact){
+			for(int i = 0; i < limit && i < from.size(); i++){
+				returned.add(from.get(i));
+			}
+		} else {
+			returned.add(from.get(0));
 		}
-		return list;
-	}
-
-	public void chooseActionsToPlay() {
-		// TODO Auto-generated method stub
-		
+		return returned;
 	}
 
 	public boolean chooseToDiscardDeck() {
 		return true;
 	}
 
-	public void chooseCardsToBuy(int coin) {
+	@Override
+	public boolean chooseToDiscardCard(Card card, Collection<Card> from) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
-	public List<Treasure> chooseTreasuresToPlay() {
+	@Override
+	public List<Card> chooseCardsToBuy(int coin, int buys) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String chooseCardToGain(int limit, Supply s) {
-		s.getCard("Copper"); //Incorrect implementation just wanted to get it to work. 
-		return "Copper";
+		return s.getCardList().get(0).getName();
 	}
 
 	@Override
 	public Action chooseActionToPlay() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Treasure> chooseTreasuresToPlay() {
 		// TODO Auto-generated method stub
 		return null;
 	}

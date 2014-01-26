@@ -2,11 +2,17 @@ package cards.test.dominion;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.junit.Test;
 
 import player.Player;
 import cards.Action;
+import cards.Card;
 import cards.CardFactory;
+import cards.Treasure;
+import cards.Victory;
 import cards.test.base.CardTest;
 
 public class BureaucratTest extends CardTest {
@@ -21,18 +27,31 @@ public class BureaucratTest extends CardTest {
 	
 	@Test
 	public void opponentsPlaceVictoryOnTopOfDeckFromHand(){
-		Player opp = new Player();
-		opp.addToHand(CardFactory.getCard("Estate"));
+		Player opp = player.getOpponents()[0];
+		opp.gainCard("Estate", opp.getHand());
 		int handSize = opp.getHand().size();
-		Player[] opps = {opp};
-		player = new Player(null, supply, opps);
 		b.execute(player);
-		assertEquals(opp.getHand().size(), handSize - 1);
-		assertEquals(opp.getDeck().peek().getName(), "Estate");
+		assertEquals(handSize - 1, opp.getHand().size());
+		assertEquals("Estate", opp.getDeck().peek().getName());
 	}
 	
 	@Test
 	public void opponentRevealsHandWithNoVictoryCards(){
-		//Not sure how to test...
+		Player opp = player.getOpponents()[0];
+		Iterator<Card> it = opp.getHand().iterator();
+		while(it.hasNext()){
+			Card c = it.next();
+			if(c instanceof Victory){
+				it.remove();
+			}
+		}
+		
+		b.execute(player);
+		List<Card> oppReveal = opp.getReveal();
+		assertTrue(oppReveal.size() > 0);
+		it = opp.getReveal().iterator();
+		while(it.hasNext()){
+			assertTrue(!(it.next() instanceof Treasure));
+		}
 	}
 }

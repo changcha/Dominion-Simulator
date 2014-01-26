@@ -1,5 +1,10 @@
 package cards.dominion;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import cards.Card;
+import cards.Victory;
 import player.Player;
 import cards.Action;
 
@@ -11,16 +16,24 @@ public class Bureaucrat extends Action {
 
 	@Override
 	public void execute(Player p) {
-	/*	p.addToDeck(s.gainCard("Silver"));
+		p.gainCard("Silver", p.getDeck());
 		Player[] opps = p.getOpponents();
-		
-		for(int i = 0; i < opps.length; i++){
-			List<Card> hand = opps[i].getHand();
-			Card removed;
-			for(int j = 0; j < hand.size(); i++){
-				if(hand.get(j) instanceof Victory)
+		for(Player opp: opps){
+			List<Card> vic = new ArrayList<Card>();
+			List<Card> oppHand = opp.getHand();
+			for(int i = 0; i < oppHand.size(); i++){
+				Card c = oppHand.get(i);
+				if(c instanceof Victory){
+					vic.add(c);
+				}
 			}
-			opps.addToDeck()
-		}*/
+			if(vic.size() != 0){
+				//TODO: May not want same logic as discard
+				List<Card> cardToDiscard = opp.getGamePlan().chooseCardsToDiscard(1, 0, true, vic);
+				opp.moveCard(opp.getHand(), opp.getDeck(), cardToDiscard.get(0));
+			} else {
+				//Reveal hand!
+			}
+		}
 	}
 }

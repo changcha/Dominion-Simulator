@@ -22,8 +22,22 @@ public class Supply {
 	public void addToTrash(Card card){
 		trash.add(card);
 	}
+	
+	public void addToTrash(List<Card> cards){
+		for(Card card: cards){
+			addToTrash(card);
+		}
+	}
 
 	public Card getCard(String name) {
 		return CardFactory.getCard(name); //Incorrect implementation for now. Just getting it to work.
+	}
+	
+	public List<Card> getCardList(){
+		//TODO: Actually implement this. Just using for tests now. 
+		List<Card> list = new ArrayList<Card>();
+		list.add(getCard("Copper"));
+		list.add(getCard("Gold"));
+		return list;
 	}
 }

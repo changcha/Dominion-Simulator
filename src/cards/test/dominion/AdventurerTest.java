@@ -35,8 +35,8 @@ public class AdventurerTest extends CardTest{
 	
 	@Test
 	public void drawsLessThanTwoTreasuresWhenNoCardsInDiscardOrDeck(){
-		player.drawCards(5);
-		player.trashCardsFromHand(8, true);
+		player.moveCards(player.drawCards(5), player.getHand());
+		player.trash(8, 0, true, player.getHand());
 		int handSize = player.getHand().size();
 		advent.execute(player);
 		assertEquals(player.getHand().size(), handSize);
