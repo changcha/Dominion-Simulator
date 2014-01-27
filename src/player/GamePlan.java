@@ -14,7 +14,7 @@ public interface GamePlan {
 	public List<Card> 		chooseCardsToDiscard(int limit, int min, boolean exact, List<Card> from);
 	public List<Card> 		chooseCardsToTrash(int limit, int min, boolean exact, List<Card> from);
 	public List<Card>	 	chooseCardsToBuy(int coin, int buys);
-	public String 			chooseCardToGain(int limit, Supply s);
+	public String 			chooseCardToGain(int limit, boolean exact, Supply s);
 	public Action 			chooseActionToPlay();
 	public List<Treasure> 	chooseTreasuresToPlay();
 	public boolean 			chooseToDiscardDeck();

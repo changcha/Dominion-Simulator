@@ -56,6 +56,7 @@ public class Player {
 		hand = new ArrayList<Card>();
 		shuffle();
 		hand.addAll(drawCards(5));
+		resetCounters();
 	}
 	
 	/********CARD MANAGEMENT********/
@@ -137,12 +138,12 @@ public class Player {
 		moveCards(drawCards(drawCount), hand);
 	}
 	
-	public void gainCard(int amount){
-		gainCard(amount, discard);
+	public void gainCard(int amount, boolean exact){
+		gainCard(amount, exact, discard);
 	}
 	
-	public void gainCard(int amount, List<Card> to){
-		String name = plan.chooseCardToGain(amount, supply);
+	public void gainCard(int amount, boolean exact, List<Card> to){
+		String name = plan.chooseCardToGain(amount, exact, supply);
 		Card card = supply.getCard(name);
 		to.add(card);
 	}
@@ -199,7 +200,7 @@ public class Player {
 		modifyTreasures(sum);
 	}
 	
-	public boolean playAction(){
+	public boolean actionPhase(){
 		if(getActionCount() > 0){
 			Action action = plan.chooseActionToPlay();
 			if(action != null){
@@ -208,6 +209,17 @@ public class Player {
 			}
 		}
 		return false;
+	}
+	
+	public void buyPhase(){
+		buyCard(getTreasureCount(), getBuyCount());
+	}
+	
+	public void cleanupPhase(){
+		moveCards(hand, discard);
+		moveCards(play, discard);
+		moveCards(reveal, discard);
+		resetCounters();
 	}
 	
 	/********GETTERS/SETTERS********/
@@ -266,7 +278,7 @@ public class Player {
 	
 	public void resetCounters(){
 		treasureCount = 0;
-		buyCount = 0;
-		actionCount = 0;
+		buyCount = 1;
+		actionCount = 1;
 	}
 }

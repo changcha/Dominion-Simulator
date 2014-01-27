@@ -53,7 +53,7 @@ public class MockGamePlan implements GamePlan{
 	}
 
 	@Override
-	public String chooseCardToGain(int limit, Supply s) {
+	public String chooseCardToGain(int limit, boolean exact, Supply s) {
 		return s.getCardList().get(0).getName();
 	}
 

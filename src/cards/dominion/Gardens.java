@@ -10,6 +10,10 @@ public class Gardens extends Card implements Victory {
 		super(cost, name);
 	}
 
+	/*
+	 * @see cards.Victory#getPoints(player.Player)
+	 * Player gains the number of cards in deck divided by 10 rounded down.
+	 */
 	@Override
 	public int getPoints(Player p) {
 		return p.getDeck().size() / 10;

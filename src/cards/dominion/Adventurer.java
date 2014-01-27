@@ -14,6 +14,11 @@ public class Adventurer extends Action {
 		super(cost, name);
 	}
 
+	/*
+	 * @see cards.Action#execute(player.Player)
+	 * Player reveals cards from deck until two treasures are revealed.
+	 * Treasures are put into hand and all other cards are discarded.
+	 */
 	@Override
 	public void execute(Player p) {
 		List<Card> treasures = new ArrayList<Card>();

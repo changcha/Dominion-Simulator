@@ -9,6 +9,11 @@ public class CouncilRoom extends Action {
 		super(cost, name, action, buy, coin, draw);
 	}
 	
+	/*
+	 * @see cards.Action#execute(player.Player)
+	 * Player gains 4 cards and a buy
+	 * All other players gain a card
+	 */
 	@Override
 	public void execute(Player p){
 		super.execute(p);

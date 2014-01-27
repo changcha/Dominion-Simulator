@@ -3,7 +3,6 @@ package cards.dominion;
 import player.Player;
 import cards.Action;
 import cards.Card;
-import cards.CardFactory;
 
 public class Moneylender extends Action {
 
@@ -11,6 +10,9 @@ public class Moneylender extends Action {
 		super(cost, name, action, buy, coin, draw);
 	}
 
+	/*
+	 * Player trashes copper to gain extra 3 coin.  
+	 */
 	@Override
 	public void execute(Player p){
 		boolean trashedCopper = false;

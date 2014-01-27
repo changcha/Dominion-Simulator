@@ -9,6 +9,7 @@ public class Supply {
 
 	private List<Card> trash;
 	private Map<String, Card> piles = new HashMap<String, Card>();
+	private Card lastTrashed;
 	
 	public Supply(){
 		trash = new ArrayList<Card>();
@@ -21,6 +22,7 @@ public class Supply {
 
 	public void addToTrash(Card card){
 		trash.add(card);
+		lastTrashed = card;
 	}
 	
 	public void addToTrash(List<Card> cards){
@@ -39,5 +41,9 @@ public class Supply {
 		list.add(getCard("Copper"));
 		list.add(getCard("Gold"));
 		return list;
+	}
+	
+	public Card getLastTrashed(){
+		return lastTrashed; 
 	}
 }

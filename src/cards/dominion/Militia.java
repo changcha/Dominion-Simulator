@@ -9,6 +9,11 @@ public class Militia extends Action {
 		super(cost, name, action, buy, coin, draw);
 	}
 	
+	/*
+	 * @see cards.Action#execute(player.Player)
+	 * Player gains 2 coin
+	 * All other players discard down to three coin.
+	 */
 	@Override
 	public void execute(Player p){
 		super.execute(p);

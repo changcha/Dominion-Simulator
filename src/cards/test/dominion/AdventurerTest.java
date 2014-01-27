@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import player.PlayerUtils;
 import cards.Action;
 import cards.Card;
 import cards.CardFactory;
@@ -19,10 +20,10 @@ public class AdventurerTest extends CardTest{
 	public void drawsExactlyTwoTreasureCards(){
 		List<Card> startHand = player.getHand();
 		int handSize = startHand.size();
-		int treasureCount = countTreasures(startHand);
+		int treasureCount = PlayerUtils.countTreasures(startHand);
 		advent.execute(player);
 		assertEquals(player.getHand().size(), handSize + 2);
-		assertEquals(countTreasures(startHand), treasureCount + 2);
+		assertEquals(PlayerUtils.countTreasures(startHand), treasureCount + 2);
 	}
 	
 	/*@Test

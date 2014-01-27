@@ -9,6 +9,10 @@ public class Chapel extends Action {
 		super(cost, name, action, buy, coin, draw);
 	}
 
+	/*
+	 * @see cards.Action#execute(player.Player)
+	 * Player may trash up to four cards from hand.
+	 */
 	@Override
 	public void execute(Player p) {
 		p.trash(4, 0, false, p.getHand());

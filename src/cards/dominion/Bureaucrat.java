@@ -14,6 +14,12 @@ public class Bureaucrat extends Action {
 		super(cost, name);
 	}
 
+	/*
+	 * @see cards.Action#execute(player.Player)
+	 * Player gains a silver
+	 * All other players must put a victory card back on top of deck 
+	 * or reveal a hand with no victory cards. 
+	 */
 	@Override
 	public void execute(Player p) {
 		p.gainCard("Silver", p.getDeck());

@@ -32,7 +32,10 @@ public class CardFactory {
 		cards.put("Library", new Action(5, "Library"));
 		cards.put("Market", new Action(5, "Market", 1, 1, 1, 1));
 		cards.put("Militia", new Militia(4, "Militia", 0, 0, 2, 0));
+		cards.put("Mine", new Mine(5, "Mine", 0, 0, 0, 0));
+		cards.put("Moat", new Moat(2, "Moat", 0, 0, 0, 2));
 		cards.put("Moneylender", new Moneylender(4, "Moneylender", 0, 0, 0, 0));
+		cards.put("Remodel", new Remodel(4, "Remodel", 0, 0, 0, 0));
 				//case "Market": return new Market(5, name);
 				
 				//case "Mine": return new Mine(5, name);

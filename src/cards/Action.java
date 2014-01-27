@@ -25,6 +25,9 @@ public class Action extends Card{
 		return getAction() == 0;
 	}
 	
+	/*
+	 * Handles updating actions, buys, treasures, or draws.
+	 */
 	public void execute(Player p){
 		p.modifyActions(getAction());
 		p.modifyBuys(getBuy());
