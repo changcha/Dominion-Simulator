@@ -26,6 +26,7 @@ public class Mine extends Action {
 		Card trashCard = trashed.get(0);
 		int worth = trashCard.getCost();
 		p.trash(trashCard);
-		//gainTreasure?
+		List<Card> availableTreasures = PlayerUtils.getTreasures(p.getSupply().getCardList());
+		p.gainCard(worth + 3, false, p.getHand(), availableTreasures);
 	}
 }

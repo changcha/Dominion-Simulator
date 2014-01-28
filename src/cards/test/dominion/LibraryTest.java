@@ -21,16 +21,18 @@ public class LibraryTest extends CardTest {
 		assertEquals(7, player.getHand().size());
 	}
 	
-	/*@Test
+	@Test
 	public void playerMayDiscardAnyActionsDrawnDuringExecution(){
+		//Prime the deck with actions
 		player.shuffle();
+		player.getDeck().clear();
+		player.gainCard("Library", player.getDeck());
+		player.gainCard("Library", player.getDeck());
+		
 		lib.execute(player);
-		player.gainCard("Library", player.getDeck());
-		player.gainCard("Library", player.getDeck());
 		List<Card> discard = player.getDiscard();
-		assertTrue(discard.size() == 1 || discard.size() == 2);
 		for(int i = 0; i < discard.size(); i++){
 			assertTrue(discard.get(i) instanceof Action);
 		}
-	}*/
+	}
 }

@@ -23,9 +23,9 @@ public class MineTest extends CardTest {
 	}
 	
 	@Test
-	public void gainedCardGoesInHandAndIsNextBestTreasure(){
-		int sum = PlayerUtils.sumTreasures(player.getHand());
+	public void gainedCardGoesInHandAndIsATreasure(){
+		int treasures = PlayerUtils.countTreasures(player.getHand());
 		m.execute(player);
-		assertEquals(sum + 1, PlayerUtils.sumTreasures(player.getHand()));
+		assertEquals(treasures, PlayerUtils.countTreasures(player.getHand()));
 	}
 }

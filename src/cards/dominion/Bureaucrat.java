@@ -38,7 +38,7 @@ public class Bureaucrat extends Action {
 				List<Card> cardToDiscard = opp.getGamePlan().chooseCardsToDiscard(1, 0, true, vic);
 				opp.moveCard(opp.getHand(), opp.getDeck(), cardToDiscard.get(0));
 			} else {
-				//Reveal hand!
+				p.alert("No victory cards available");
 			}
 		}
 	}

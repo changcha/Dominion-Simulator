@@ -3,7 +3,6 @@ package cards.test.dominion;
 import static org.junit.Assert.*;
 
 import java.util.Iterator;
-import java.util.List;
 
 import org.junit.Test;
 
@@ -11,7 +10,6 @@ import player.Player;
 import cards.Action;
 import cards.Card;
 import cards.CardFactory;
-import cards.Treasure;
 import cards.Victory;
 import cards.test.base.CardTest;
 
@@ -47,11 +45,6 @@ public class BureaucratTest extends CardTest {
 		}
 		
 		b.execute(player);
-		List<Card> oppReveal = opp.getReveal();
-		assertTrue(oppReveal.size() > 0);
-		it = opp.getReveal().iterator();
-		while(it.hasNext()){
-			assertTrue(!(it.next() instanceof Treasure));
-		}
+		assertEquals(player.getAlert(), "No victory cards available");
 	}
 }

@@ -42,19 +42,18 @@ public class MockGamePlan implements GamePlan{
 
 	@Override
 	public boolean chooseToDiscardCard(Card card, Collection<Card> from) {
-		// TODO Auto-generated method stub
-		return false;
+		return Math.random() >= 0.5 ? false: true;
 	}
 
 	@Override
-	public List<Card> chooseCardsToBuy(int coin, int buys) {
+	public List<Card> chooseCardsToBuy(int coin, int buys, Supply supply) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String chooseCardToGain(int limit, boolean exact, Supply s) {
-		return s.getCardList().get(0).getName();
+	public String chooseCardToGain(int limit, boolean exact, List<Card> chooseFrom) {
+		return chooseFrom.get(0).getName();
 	}
 
 	@Override

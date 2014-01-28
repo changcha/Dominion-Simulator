@@ -28,6 +28,7 @@ public class Player {
 	private int actionCount;
 	private int buyCount;
 	private int treasureCount;
+	private String alert;
 	
 	public Player(){
 		this(null, null, null);
@@ -121,6 +122,10 @@ public class Player {
 		}
 	}
 	
+	public Card drawCard(){
+		return drawCards(1).get(0);
+	}
+	
 	public List<Card> drawCards(int drawCount) {
 		List<Card> drawn = new ArrayList<Card>();
 		for(int i = 0; i < drawCount; i++){
@@ -139,11 +144,11 @@ public class Player {
 	}
 	
 	public void gainCard(int amount, boolean exact){
-		gainCard(amount, exact, discard);
+		gainCard(amount, exact, discard, supply.getCardList());
 	}
 	
-	public void gainCard(int amount, boolean exact, List<Card> to){
-		String name = plan.chooseCardToGain(amount, exact, supply);
+	public void gainCard(int amount, boolean exact, List<Card> to, List<Card> chooseFrom){
+		String name = plan.chooseCardToGain(amount, exact, chooseFrom);
 		Card card = supply.getCard(name);
 		to.add(card);
 	}
@@ -161,7 +166,7 @@ public class Player {
 	}
 	
 	public void buyCard(int coin, int buys, List<Card> to){
-		List<Card> purchases = plan.chooseCardsToBuy(coin, buys);
+		List<Card> purchases = plan.chooseCardsToBuy(coin, buys, supply);
 		for(int i = 0; i < purchases.size(); i++){
 			Card card = supply.getCard(purchases.get(i).getName());
 			to.add(card);
@@ -222,6 +227,11 @@ public class Player {
 		resetCounters();
 	}
 	
+	//Get alerts from other players. Not sure how to do this quite yet. 
+	public void alert(String alert){
+		this.alert = alert;
+	}
+	
 	/********GETTERS/SETTERS********/
 	public List<Card> getHand(){
 		return hand;
@@ -263,6 +273,13 @@ public class Player {
 		this.plan = plan;
 	}
 	
+	public Supply getSupply(){
+		return supply;
+	}
+	
+	public String getAlert(){
+		return alert;
+	}
 	/********TURN COUNTERS********/
 	public void modifyTreasures(int amount){
 		treasureCount += amount;
