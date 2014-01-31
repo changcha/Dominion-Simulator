@@ -18,7 +18,7 @@ public class Adventurer extends Action {
 	 * @see cards.Action#execute(player.Player)
 	 * Player reveals cards from deck until two treasures are revealed.
 	 * Treasures are put into hand and all other cards are discarded.
-	 * Set Dominino: Base Set.
+	 * Set Dominion: Base Set.
 	 */
 	@Override
 	public void execute(Player p) {
