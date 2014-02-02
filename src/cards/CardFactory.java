@@ -36,6 +36,7 @@ public class CardFactory {
 		cards.put("Moat", new Moat(2, "Moat", 0, 0, 0, 2));
 		cards.put("Moneylender", new Moneylender(4, "Moneylender", 0, 0, 0, 0));
 		cards.put("Remodel", new Remodel(4, "Remodel", 0, 0, 0, 0));
+		cards.put("Village", new Village(3, "Village", 1, 0, 0, 2));
 				//case "Market": return new Market(5, name);
 				
 				//case "Mine": return new Mine(5, name);
